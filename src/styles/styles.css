@@ -1,0 +1,15 @@
+
+/* eESTILOS CARD HOME */
+.container__card{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.card-img{
+    height: 100%;
+}
+.img-product{
+    height: 15rem;
+}
