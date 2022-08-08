@@ -1,0 +1,26 @@
+
+.purchases__title{
+    margin: 1rem;
+}
+.purchases__user{
+    margin: 4rem;
+}
+.purchases__user-product{
+    margin-bottom: 2rem;
+    width: 40rem;
+    background-color: #fff;
+    text-align: end;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(70, 68, 68, 0.501);
+    
+}
+.purchases__info, .purchases__date{
+    display: flex;
+    text-align: end;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    padding: 0.1rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.6);
+}

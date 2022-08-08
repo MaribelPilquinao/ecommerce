@@ -1,15 +1,30 @@
 
-/* eESTILOS CARD HOME */
-.container__card{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    gap: 1rem;
+/* FOOTER */
+.footer{
+    height: 10rem;
+    background-color: rgba(39, 38, 38, 0.947); 
+    opacity: .9; 
 }
-.card-img{
-    height: 100%;
+.footer:hover{
+    opacity: 1;
 }
-.img-product{
-    height: 15rem;
+
+.footer__icon, .footer__icon-instagram, .footer__icon-facebook{
+    border-radius: 50%;
+    width: 2rem;
+    position: absolute;
+    right: 49%;
+    margin-top: 6.5rem;
+    cursor: pointer;
+}
+.footer__icon-instagram{
+    right: 45%;
+}
+.footer__icon-facebook{
+   right: 53%;
+}
+.footer__text{
+    text-align: center;
+    color: #eee;
+    padding-top: 2rem;
 }

@@ -1,0 +1,43 @@
+.container__product-detail{
+    display: flex;
+}
+
+.products__images img{
+    object-fit: contain;
+    height: 25rem;
+    padding: 1em;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.products__description{
+    width: 55rem;
+    padding: 1rem;
+    margin: 3rem;
+    background-color: white;
+    padding-top: 1rem;
+    position: relative;
+    left: 5%;
+}
+.products__description-text{
+    margin-top: 1rem;
+}
+.btn__cart-detail{
+    text-align: center;
+}
+.button__cart-detail{
+    background-color: rgba(246, 20, 20, 0.937);
+    color: white;
+    width: 15rem;
+    height: 2rem;
+    border: 1px solid red;
+}
+.products-seggested{
+   width: 190vh;
+   margin: 3rem;
+}
+.image__product-detail{
+    object-fit: contain;
+    height: 20rem;
+    padding: 2em;
+    
+}

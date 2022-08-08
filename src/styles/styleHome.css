@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    margin-bottom: 3rem;
+    
+}
+/* CARD HOME */
+
+.container__card{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+ 
+}
+.product-img{
+    border-bottom: 1px solid rgba(67, 65, 65, 0.285);
+
+}
+.image{
+    object-fit: contain;
+    height: 20rem;
+    padding: 1.5em;
+}
+
+.product-description{
+    margin-bottom: .5rem;
+}
+.product-description>p{
+    color: rgb(75, 73, 73);
+    margin-bottom: 0;
+}
+
+.img__cart{
+    width: 2rem;
+}
+.btn__cart{
+    position: absolute;
+    left: 75%;
+    margin-top: -2.5rem;
+   
+}
+
+/* CATEGORIAS */
+
+.container__category{
+    margin: .5rem;
+    position: relative;
+    left: -6rem;
+    cursor: pointer;
+}
+
+.category-span{
+    font-size: 1.5rem;
+    width: 15rem;
+}

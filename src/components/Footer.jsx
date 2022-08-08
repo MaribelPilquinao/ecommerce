@@ -1,10 +1,28 @@
 import React from 'react';
+import "../styles/styles.css"
+import iconLinkedin from '../images/iconLinkedin.png'
+import iconInstagram from '../images/iconInstagram.png'
+import iconFacebook from '../images/iconFacebook.png'
 
 const Footer = () => {
     return (
-                
-        <footer>
-            
+        <footer className='footer'>
+            <div className="icons__rrss">
+                <a href="https://www.linkedin.com/in/maribel-pilquinao/">
+                    <img className='footer__icon' src={iconLinkedin} alt="icon linkedin" />
+                </a>
+                <a href="https://www.instagram.com/mar_alejandrap/">
+                    <img className='footer__icon-instagram'src={iconInstagram} alt="icon instagram" />
+                </a>
+                <a href="https://www.facebook.com/maribel.pilquinao.3/">
+                    <img className='footer__icon-facebook' src={iconFacebook} alt="icon facebook" />
+                </a>
+            </div>
+            <section className="footer__text">
+                <h4>© Academlo</h4>
+                <p>Todos los derechos reservados</p>
+            </section>
+
         </footer>
     );
 };

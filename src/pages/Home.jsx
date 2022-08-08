@@ -1,16 +1,14 @@
 import "../styles/styles.css"
+import '../styles/styleHome.css'
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProductsThunk, filterProductsThunk, filterCategoryThunk } from '../store/slices/products.slice';
 import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
-import { Card, ListGroup, Form, InputGroup, Button } from 'react-bootstrap';
+import { Card, ListGroup, Form, InputGroup, Button, Row, Col } from 'react-bootstrap';
 import axios from "axios";
-
-
-
-
-
+import iconSearch from '../images/iconSearch.png'
+import shoppingcart from '../images/shoppingcart.png'
 
 
 const Home = () => {
@@ -33,55 +31,56 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Home</h1>
-            <>
-                <InputGroup className="mb-3">
+            <section className="container__input">
+                <InputGroup className="mb-4 mt-5 ">
                     <Form.Control aria-label="Text"
-                        style={{marginLeft: "4rem", marginRight: ".3rem"}}
+                        style={{ marginLeft: "30rem", marginRight: ".2rem" }}
                         onChange={(e) => setSearchValue(e.target.value)}
                         value={searchValue}
                         placeholder="Nombre del producto"
                     />
-                    <Button variant="outline-danger"
-                            style={{marginRight: "5.5rem"}}
+                    <Button variant="outline-primary"
+                        style={{ marginRight: "12.5rem" }}
                         onClick={() => dispatch(filterProductsThunk(searchValue))}>
-                        Search
+                        <img src={iconSearch} alt="" />
                     </Button>
                 </InputGroup>
-            </>
-            <div className='container__card'>
-                <div>
+            </section>
+            <article className="container">
+                <section className="container__category">
                     <ListGroup>
-                        <h3>Categorias</h3>
+                        <span className="category-span">Categorias</span><hr />
                         {categories.map(category => (
                             <ListGroup.Item key={categories.id}
-                                onClick={() => dispatch(filterCategoryThunk(category.id))}
-                            >
+                                onClick={() => dispatch(filterCategoryThunk(category.id))}>
                                 {category.name}
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
-                </div>
-                {products?.map(product => (
-
-                    <Card style={{ width: '18rem', display: "flex" }}
-                        key={product.id}
-                        onClick={() => navigate(`/products/${product.id}`)}>
-                        <div className="img-product">
-                            <Card.Img src={product.productImgs}
-                                className="card-img"
-                                variant="top"
-                                alt="image product" />
-                        </div>
-                        <Card.Body>
-                            <Card.Title>{product.title}</Card.Title>
-                        </Card.Body>
-                        <ListGroup className="list-group-flush">
-                            <ListGroup.Item><b>Price:</b> {product.price}</ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                ))}
-            </div>
+                </section>
+                <section className="container-card">
+                    <Row xs={1} md={2} xl={3} className="g-4">
+                        {products?.map(product => (
+                            <Col key={product.id}>
+                                <Card onClick={() => navigate(`/products/${product.id}`)}>
+                                    <div className="product-img">
+                                        <Card.Img className="image" src={product.productImgs} />
+                                    </div>
+                                    <Card.Body className="product-description">
+                                        <Card.Title >{product.title}</Card.Title>
+                                        <p><b>Price:</b></p>
+                                        <Card.Text> {product.price}</Card.Text>
+                                        <Button variant="outline-danger"
+                                            className="btn__cart">
+                                            <img className="img__cart" src={shoppingcart} alt="icon shopping cart" />
+                                        </Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                </section>
+            </article>
         </div>
     );
 };
