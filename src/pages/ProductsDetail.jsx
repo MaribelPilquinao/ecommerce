@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductsThunk } from '../store/slices/products.slice';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, InputGroup, Form, Button } from 'react-bootstrap';
 import '../styles/stylesProductDetail.css'
+import { addCartThunk } from '../store/slices/cart.slice';
 
 const ProductsDetail = () => {
 
     const products = useSelector(state => state.products)
     const [productDetail, setProductDetail] = useState({})
     const [suggestedProducts, setSuggestedProduct] = useState([])
+    const [quantity, setQuantity] = useState("");
 
     const { id } = useParams();
 
@@ -31,6 +33,17 @@ const ProductsDetail = () => {
 
     }, [products, id])
 
+    const addToCart = () => {
+        const toCart = {
+            id: productDetail.id,
+            quantity
+        }
+        alert("añadido al carrito")
+        dispatch(addCartThunk(toCart));
+
+    }
+
+
     return (
         <section >
             <article className='container__product-detail'>
@@ -41,12 +54,16 @@ const ProductsDetail = () => {
                     <h4>{productDetail?.title}</h4> <hr />
                     <div className='products__description-text'>
                         <p>Description:
-                            {productDetail.description}
+                            {productDetail?.description}
                         </p>
                         <p>Price: {productDetail?.price}</p>
                     </div>
                     <div className="btn__cart-detail">
-                        <button className='button__cart-detail'>Agregar al carrito</button>
+                        <button className='button__cart-detail'
+                        onClick={addToCart}
+                        >
+                            Agregar al carrito
+                        </button>
                     </div>
                 </section>
             </article>

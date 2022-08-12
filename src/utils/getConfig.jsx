@@ -1,5 +1,5 @@
 const getConfig = () => ({
-    headers: { Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5ODIxMjg0LCJleHAiOjE2NjUwMDUyODR9.m0Io3D1HVO1S559GdptQaiPlvxBAN8TgGUvi2oZZjTA'}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
 });
 
 export default getConfig;

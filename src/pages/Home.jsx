@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 import { getProductsThunk, filterProductsThunk, filterCategoryThunk } from '../store/slices/products.slice';
 import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
-import { Card, ListGroup, Form, InputGroup, Button, Row, Col } from 'react-bootstrap';
+import { Card, ListGroup, Form, InputGroup, Button } from 'react-bootstrap';
 import axios from "axios";
 import iconSearch from '../images/iconSearch.png'
-import shoppingcart from '../images/shoppingcart.png'
+import ProductsCart from "../components/ProductsCart";
 
 
 const Home = () => {
@@ -27,7 +27,10 @@ const Home = () => {
         axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/products/categories")
             .then(res => setCategories(res.data?.data.categories))
     }, [])
-    console.log(categories)
+    // console.log(categories)
+
+  
+
 
     return (
         <div>
@@ -51,7 +54,7 @@ const Home = () => {
                     <ListGroup>
                         <span className="category-span">Categorias</span><hr />
                         {categories.map(category => (
-                            <ListGroup.Item key={categories.id}
+                            <ListGroup.Item key={categories.title}
                                 onClick={() => dispatch(filterCategoryThunk(category.id))}>
                                 {category.name}
                             </ListGroup.Item>
@@ -59,9 +62,9 @@ const Home = () => {
                     </ListGroup>
                 </section>
                 <section className="container-card">
-                    <Row xs={1} md={2} xl={3} className="g-4">
+                    {/* <Row xs={1} md={2} xl={3} className="g-4">
                         {products?.map(product => (
-                            <Col key={product.id}>
+                            <Col key={product.title}>
                                 <Card onClick={() => navigate(`/products/${product.id}`)}>
                                     <div className="product-img">
                                         <Card.Img className="image" src={product.productImgs} />
@@ -70,15 +73,17 @@ const Home = () => {
                                         <Card.Title >{product.title}</Card.Title>
                                         <p><b>Price:</b></p>
                                         <Card.Text> {product.price}</Card.Text>
-                                        <Button variant="outline-danger"
-                                            className="btn__cart">
-                                            <img className="img__cart" src={shoppingcart} alt="icon shopping cart" />
-                                        </Button>
                                     </Card.Body>
                                 </Card>
+                                <Button variant="outline-danger"
+                                    className="btn__cart"
+                                    onClick={() => addToCart(product.id, 1)}>
+                                    <img className="img__cart" src={shoppingcart} alt="icon shopping cart" />
+                                </Button>
                             </Col>
                         ))}
-                    </Row>
+                    </Row> */}
+                    <ProductsCart products={products}/>
                 </section>
             </article>
         </div>
