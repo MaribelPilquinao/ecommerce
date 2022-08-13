@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getProductsThunk } from '../store/slices/products.slice';
 import { Card, Row, Col, InputGroup, Form, Button } from 'react-bootstrap';
 import '../styles/stylesProductDetail.css'
-import { addCartThunk } from '../store/slices/cart.slice';
+import { addCartThunk, getCartThunk } from '../store/slices/cart.slice';
 
 const ProductsDetail = () => {
 
@@ -19,7 +19,8 @@ const ProductsDetail = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getProductsThunk())
+        dispatch(getProductsThunk());
+        dispatch(getCartThunk())
     }, [])
 
     useEffect(() => {

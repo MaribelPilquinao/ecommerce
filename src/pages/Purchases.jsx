@@ -42,7 +42,6 @@ const Purchases = () => {
                                 <section className="purchases__info">
                                     <h5 key={product.title}>{product.title}</h5>
                                     <p>{product.productsInCart.quantity}</p>
-                                    <p><b>{product.price}</b></p>
                                     <div className="purchases__price">
                                         <h5>{product.productsInCart.quantity*product.price}</h5>
                                     </div>

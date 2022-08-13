@@ -18,11 +18,12 @@ const ProductsCart = ({ products }) => {
     }
 
     const addToCart = (id, quantity) => {
-        const productToCart = ({
-            id,
-            quantity
-        })
-        dispatch(addCartThunk(productToCart))
+        // const productToCart = {
+        //     id,
+        //     quantity
+        // }
+        dispatch(addCartThunk(id, quantity))
+        
     }
 
     return (

@@ -31,7 +31,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='container-login'>
             <h1>Login</h1>
             <Form onSubmit={handleSubmit(submit)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -46,7 +46,7 @@ const Login = () => {
                     <Form.Control type="password" placeholder="Password" {...register("password")}/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Log out
                 </Button>
             </Form>
         </div>

@@ -14,7 +14,6 @@ import ProductsCart from "../components/ProductsCart";
 const Home = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState("")
     const [categories, setCategories] = useState([])
 
@@ -62,27 +61,6 @@ const Home = () => {
                     </ListGroup>
                 </section>
                 <section className="container-card">
-                    {/* <Row xs={1} md={2} xl={3} className="g-4">
-                        {products?.map(product => (
-                            <Col key={product.title}>
-                                <Card onClick={() => navigate(`/products/${product.id}`)}>
-                                    <div className="product-img">
-                                        <Card.Img className="image" src={product.productImgs} />
-                                    </div>
-                                    <Card.Body className="product-description">
-                                        <Card.Title >{product.title}</Card.Title>
-                                        <p><b>Price:</b></p>
-                                        <Card.Text> {product.price}</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                                <Button variant="outline-danger"
-                                    className="btn__cart"
-                                    onClick={() => addToCart(product.id, 1)}>
-                                    <img className="img__cart" src={shoppingcart} alt="icon shopping cart" />
-                                </Button>
-                            </Col>
-                        ))}
-                    </Row> */}
                     <ProductsCart products={products}/>
                 </section>
             </article>

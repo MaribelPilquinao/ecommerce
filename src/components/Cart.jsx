@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { buyCart, getCartThunk } from '../store/slices/cart.slice';
+import '../styles/cart.css'
+
 
 
 const Cart = ({ show, handleClose }) => {
 
     const cart = useSelector(state => state.cart)
 
-    console.log(cart)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCartThunk())
+    }, [])
+
+    const getTotal = () => {
+        let total = 0;
+        cart.forEach(product => {
+            total += Number(product.price) * product.productsInCart.quantity
+        })
+
+        return total
+    }
+
+
 
     return (
 
-        <Offcanvas show={show} onHide={handleClose} placement='end'>
-            <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Cart</Offcanvas.Title>
+
+        <Offcanvas show={show} onHide={handleClose} placement='end' >
+            <Offcanvas.Header closeButton style={{  alignItems: "baseline"}}>
+                <Offcanvas.Title>Cart</Offcanvas.Title> 
+                <div className="cart">
                 <ul className="cart-products-list">
                     {
                         cart?.map(product => (
@@ -37,20 +56,21 @@ const Cart = ({ show, handleClose }) => {
                     }
                 </ul>
                 <div className="checkout-section">
-                    <div className="total">
-                        <span className="label" >Total:</span>
-                        <b>$ 0</b>
+                    <div className="total"> <hr />
+                        <span className="label" >Total:</span> 
+                        <b>$ {getTotal()}</b>
                     </div>
-                    <button
-
+                    <button onClick={() => dispatch(buyCart())}
                         className="buy-button" >
                         Checkout
                     </button>
+                </div>
                 </div>
             </Offcanvas.Header>
             <Offcanvas.Body>
             </Offcanvas.Body>
         </Offcanvas>
+
 
     );
 };

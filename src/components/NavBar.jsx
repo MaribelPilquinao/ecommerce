@@ -6,15 +6,11 @@ import Cart from './Cart';
 const NavBar = () => {
 
     const navigate = useNavigate();
-
     const [show, setShow] = useState(true);
-
 
     const token = localStorage.getItem('token');
 
-
     const handleClose = () => setShow(false);
-
     const handleShow = () => {
         if (token) {
             setShow(true)
