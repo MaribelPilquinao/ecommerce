@@ -1,15 +1,16 @@
-
 /* FOOTER */
-.footer{
+.footer {
     height: 10rem;
-    background-color: rgba(39, 38, 38, 0.947); 
-    opacity: .9; 
+    background-color: rgba(39, 38, 38, 0.947);
+    opacity: 0.9;
 }
-.footer:hover{
+.footer:hover {
     opacity: 1;
 }
 
-.footer__icon, .footer__icon-instagram, .footer__icon-facebook{
+.footer__icon,
+.footer__icon-instagram,
+.footer__icon-facebook {
     border-radius: 50%;
     width: 2rem;
     position: absolute;
@@ -17,20 +18,20 @@
     margin-top: 6.5rem;
     cursor: pointer;
 }
-.footer__icon-instagram{
+.footer__icon-instagram {
     right: 45%;
 }
-.footer__icon-facebook{
-   right: 53%;
+.footer__icon-facebook {
+    right: 53%;
 }
-.footer__text{
+.footer__text {
     text-align: center;
     color: #eee;
     padding-top: 2rem;
 }
 /* LOGIN */
 
-.container-login{
+.container-login {
     text-align: center;
     width: 30rem;
     height: 36.7rem;

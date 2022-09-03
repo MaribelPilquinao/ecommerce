@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import getConfig from "../../utils/getConfig"
+import getConfig from '../../utils/getConfig';
 import { setIsLoading } from './isLoading.slice';
 
 export const cartSlice = createSlice({
@@ -9,35 +9,44 @@ export const cartSlice = createSlice({
     reducers: {
         setCart: (_state, action) => {
             const cart = action.payload;
-            return cart
-        }
-
-    }
-})
+            return cart;
+        },
+    },
+});
 
 export const getCartThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())
+    return axios
+        .get(
+            'https://ecommerce-api-react.herokuapp.com/api/v1/cart/',
+            getConfig()
+        )
         .then((res) => dispatch(setCart(res.data.data.cart.products)))
         .finally(() => dispatch(setIsLoading(false)));
-}
+};
 
 export const addCartThunk = (id, quantity) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/cart', {id, quantity}, getConfig())
+    return axios
+        .post(
+            'https://ecommerce-api-react.herokuapp.com/api/v1/cart/',
+            { id, quantity },
+            getConfig()
+        )
         .then((res) => dispatch(getCartThunk()))
         .finally(() => dispatch(setIsLoading(false)));
-}
+};
 
 export const buyCart = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post( 'https://ecommerce-api-react.herokuapp.com/api/v1/cart',{}, getConfig())
-      .then(res => dispatch(setCart([])))
-      .finally(() => dispatch(setIsLoading(false)));
-  }
+    return axios
+        .post('https://ecommerce-api-react.herokuapp.com/api/v1/cart/', {} , getConfig())
+        .then((res) => dispatch(setCart([])))
+        .finally(() => dispatch(setIsLoading(false)));
+};
+
+
 
 export const { setCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
-
-

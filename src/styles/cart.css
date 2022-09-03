@@ -1,21 +1,22 @@
-.cart{
+.cart {
     display: block;
     height: 48rem;
     overflow-y: scroll;
     scroll-behavior: smooth;
-  
 }
 
-dl, ol, ul {
+dl,
+ol,
+ul {
     margin-top: 0;
     margin-bottom: 1rem;
     list-style: none;
 }
-.checkout-section{
+.checkout-section {
     text-align: center;
 }
 
-.buy-button{
+.buy-button {
     height: 2.2rem;
     background-color: red;
     width: 14rem;
