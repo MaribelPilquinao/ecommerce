@@ -9,6 +9,7 @@ const ProductsCart = ({ products }) => {
 
     const dispatch = useDispatch()
 
+    // función para efecto de imagen
     const showImage = event => {
         event.target.childNodes[1]?.classList.add('hover')
     }
@@ -16,14 +17,10 @@ const ProductsCart = ({ products }) => {
     const hiddeImage = event => {
         event.target.childNodes[1]?.classList?.remove('hover')
     }
+    // fin efecto
 
-    const addToCart = (id, quantity) => {
-        // const productToCart = {
-        //     id,
-        //     quantity
-        // }
-        dispatch(addCartThunk(id, quantity))
-        
+    const addToCart = ( id, quantity ) => {
+        dispatch( addCartThunk( id, quantity ) )
     }
 
     return (
@@ -53,7 +50,7 @@ const ProductsCart = ({ products }) => {
                                 <span className="amount" >$ {product.price}</span>
                                 <button
                                     onClick={() => addToCart(product.id, 1)}
-                                ><img className="img__cart" src={shoppingcart} alt="" /></button>
+                                ><i className="fa-solid fa-cart-shopping"></i></button>
                             </div>
                         </li>
                     ))

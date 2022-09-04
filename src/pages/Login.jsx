@@ -9,8 +9,6 @@ const Login = () => {
     const {register, handleSubmit, reset} = useForm();
     const navigate = useNavigate(); 
 
-    
-
     const submit = data => {
        
         axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/users/login', data)
@@ -32,13 +30,17 @@ const Login = () => {
 
     return (
         <div className='container-login'>
-            <h1>Login</h1>
+            <h4>Welcome! Enter your email and password to continue</h4>
+            <div className="example-user">
+                <h5>Test Data</h5>
+                <p className="name__user-email">Email: mason@gmail.com</p>
+                <p className="password-email">Password: mason1234</p>
+            </div>
             <Form onSubmit={handleSubmit(submit)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" {...register("email")} />
-                    <Form.Text className="text-muted">
-                       
+                    <Form.Text className="text-muted">  
                     </Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">

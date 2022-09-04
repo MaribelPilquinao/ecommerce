@@ -26,7 +26,7 @@
 }
 .footer__text {
     text-align: center;
-    color: #eee;
+    color: #fff;
     padding-top: 2rem;
 }
 /* LOGIN */
@@ -37,4 +37,13 @@
     height: 36.7rem;
     padding: 5rem;
     margin: auto;
+}
+.example-user{
+    background-color: rgba(77, 171, 222, 0.627);
+    padding: .5rem;
+    margin: .3rem;
+    border-radius: 10px;
+}
+.example-user > p{
+    line-height: 1rem;
 }

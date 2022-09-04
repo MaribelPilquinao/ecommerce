@@ -8,7 +8,7 @@ import {
     filterCategoryThunk,
 } from '../store/slices/products.slice';
 import { useSelector } from 'react-redux/es/exports';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Card, ListGroup, Form, InputGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 import iconSearch from '../images/iconSearch.png';
@@ -41,7 +41,7 @@ const Home = () => {
                         style={{ marginLeft: '30rem', marginRight: '.2rem' }}
                         onChange={(e) => setSearchValue(e.target.value)}
                         value={searchValue}
-                        placeholder='Nombre del producto'
+                        placeholder='What are you looking for?'
                     />
                     <Button
                         variant='outline-primary'
@@ -60,11 +60,11 @@ const Home = () => {
             <article className='container'>
                 <section className='container__category'>
                     <ListGroup>
-                        <span className='category-span'>Categorias</span>
+                        <span className='category-span'>Categories</span>
                         <hr />
                         {categories.map((category) => (
-                            <ListGroup.Item
-                                key={categories.title}
+                            <ListGroup.Item className='category-item'
+                                key={category.id}
                                 onClick={() =>
                                     dispatch(filterCategoryThunk(category.id))
                                 }

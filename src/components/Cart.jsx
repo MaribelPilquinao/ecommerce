@@ -28,8 +28,6 @@ const Cart = ({ show, handleClose }) => {
 
 
     return (
-
-
         <Offcanvas show={show} onHide={handleClose} placement='end' >
             <Offcanvas.Header closeButton style={{  alignItems: "baseline"}}>
                 <Offcanvas.Title>Cart</Offcanvas.Title> 

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPurchasesThunk } from '../store/slices/purchases.slice';
 import '../styles/stylesPurchases.css'
@@ -15,11 +14,12 @@ const Purchases = () => {
         dispatch(getPurchasesThunk())
     }, [])
 
-
-    const getTotal = products => {
+// no funciona
+    const getTotal = purchases => {
         let total = 0
-        products.forEach(product => {
+        purchases.forEach(product => {
             total = Number(product.price)
+            console.log(total)
         })
         return total
     }
@@ -27,20 +27,25 @@ const Purchases = () => {
 
     return (
         <section>
+            <div className="title">
+                <h4>Home</h4>
+                <div className="circle"></div>
+                <h4>purchases</h4>
+            </div>
             <section className='purchases__title'>
             <h2>My purchases</h2>
             </section>
-            <article className="purchases__user">
+            <article className="container__purchases">
                 {purchases.map((purchasesItem, index) => (
                     
                         <div className="purchases__user-product">
                             <section className="purchases__date"> 
-                                <h6>Purchases Nº {index + 1}</h6> 
-                                <h6 key={purchasesItem.id}>{purchasesItem.createdAt.slice(0, 10)}</h6>
+                                <h5>Purchases Nº {index + 1}</h5> 
+                                <h5 key={purchasesItem.id}>{purchasesItem.createdAt.slice(0, 10)}</h5>
                             </section>
                             {purchasesItem.cart.products.map(product => (
-                                <section className="purchases__info">
-                                    <h5 key={product.title}>{product.title}</h5>
+                                <section key={product.id} className="purchases__info">
+                                    <h5 >{product.title}</h5>
                                     <p>{product.productsInCart.quantity}</p>
                                     <div className="purchases__price">
                                         <h5>{product.productsInCart.quantity*product.price}</h5>

@@ -8,11 +8,14 @@
 
 /* CATEGORIAS */
 
-.container__category {
-    margin: 0.5rem;
-    position: relative;
-    left: -6rem;
+.category-item {
     cursor: pointer;
+    opacity: .7;
+}
+
+.category-item:hover{
+    opacity: 1;
+    background-color: #fff;
 }
 
 .category-span {
