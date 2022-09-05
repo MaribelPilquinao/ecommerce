@@ -15,7 +15,7 @@
     width: 2rem;
     position: absolute;
     right: 49%;
-    margin-top: 6.5rem;
+    margin-top: 7.2rem;
     cursor: pointer;
 }
 .footer__icon-instagram {
@@ -27,7 +27,7 @@
 .footer__text {
     text-align: center;
     color: #fff;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
 }
 /* LOGIN */
 

@@ -6,10 +6,10 @@ import {
     getProductsThunk,
     filterProductsThunk,
     filterCategoryThunk,
+    filterPriceThunk,
 } from '../store/slices/products.slice';
 import { useSelector } from 'react-redux/es/exports';
-// import { useNavigate } from 'react-router-dom';
-import { Card, ListGroup, Form, InputGroup, Button } from 'react-bootstrap';
+import { ListGroup, Form, InputGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 import iconSearch from '../images/iconSearch.png';
 import ProductsCart from '../components/ProductsCart';
@@ -18,6 +18,9 @@ const Home = () => {
     const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
     const [categories, setCategories] = useState([]);
+
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
 
     const products = useSelector((state) => state.products);
 
@@ -32,6 +35,15 @@ const Home = () => {
     }, []);
     // console.log(categories)
 
+    const selectPrice = (e) => {
+        e.preventDefault();
+        dispatch(filterPriceThunk({ minPrice, maxPrice }));
+        if (minPrice < 1000) {
+            alert(
+                'Escribir una cantidad mayor o igual a 1000'
+            );
+        }
+    };
     return (
         <div>
             <section className='container__input'>
@@ -63,7 +75,8 @@ const Home = () => {
                         <span className='category-span'>Categories</span>
                         <hr />
                         {categories.map((category) => (
-                            <ListGroup.Item className='category-item'
+                            <ListGroup.Item
+                                className='category-item'
                                 key={category.id}
                                 onClick={() =>
                                     dispatch(filterCategoryThunk(category.id))
@@ -73,6 +86,36 @@ const Home = () => {
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
+                    <section className='title-price'>
+                        <span className="filter-price__span">Price</span> <hr />
+                        <form onSubmit={selectPrice}>
+                         <div className="container__filter-price">
+                            <Form.Group className='mb-3'>
+                                <Form.Label style={{marginLeft: '1rem', fontSize: '1.1rem'}}>From</Form.Label>
+                                <input className='input__filter-price'
+                                    type='number'
+                                    value={minPrice}
+                                    onChange={(e) =>
+                                        setMinPrice(e.target.value)
+                                    }
+                                />
+                                <Form.Label style={{marginLeft: '1rem', fontSize: '1.1rem'}}>To</Form.Label>
+                                <input className='input__filter-price'
+                                    type='number'
+                                    value={maxPrice}
+                                    onChange={(e) =>
+                                        setMaxPrice(e.target.value)
+                                    }
+                                />
+                            </Form.Group>
+                            <Button style={{marginLeft: '8.5rem', marginTop: '1rem', background: '#ffff', color: 'blue'}}
+                                type='submit'
+                            >
+                                Filter price
+                            </Button>
+                        </div>
+                        </form>
+                    </section>
                 </section>
                 <section className='container-card'>
                     <ProductsCart products={products} />

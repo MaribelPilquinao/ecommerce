@@ -60,6 +60,7 @@ const ProductsDetail = () => {
     const hiddeImage = (event) => {
         event.target.childNodes[1]?.classList?.remove('hover');
     };
+
     // fin efecto de imagen
 
     return (
@@ -69,11 +70,22 @@ const ProductsDetail = () => {
                 <div className='circle'></div>
             </div>
             <article className='container__product-detail'>
-                <section className='products__images'>
-                    <img
-                        src={productDetail?.productImgs}
-                        alt=''
-                    />
+                <section className='product-img__detail'
+                onMouseEnter={(e) => showImage(e)}
+                onMouseLeave={(e) => hiddeImage(e)}
+
+                >
+                    <div className="image-wrapp__detail">
+
+                            {/* <img
+                                src={productDetail?.productImgs?.[1]}
+                                alt=''
+                            /> */}
+                            <img
+                                src={productDetail?.productImgs?.[2]}
+                                alt=''
+                            />
+                    </div>
                 </section>
                 <section className='products__description'>
                     <h4>{productDetail?.title}</h4> <hr />
@@ -88,11 +100,21 @@ const ProductsDetail = () => {
                         <p>Price: {productDetail?.price}</p>
                     </div>
                     <div className='quantity'>
-                        <span className='label'>Quantity</span>
-                        <div className='flex'>
-                            <button onClick={() => subtract()}>-</button>
+                        <span className='label-quantity'>Quantity</span>
+                        <div className='quantity__add-sub'>
+                            <button
+                                className='btn-quantity'
+                                onClick={() => subtract()}
+                            >
+                                -
+                            </button>
                             <div className='value'>{quantity}</div>
-                            <button onClick={() => add()}>+</button>
+                            <button
+                                className='btn-quantity'
+                                onClick={() => add()}
+                            >
+                                +
+                            </button>
                         </div>
                     </div>
                     <div className='btn__cart-detail'>
@@ -100,7 +122,7 @@ const ProductsDetail = () => {
                             className='button__cart-detail'
                             onClick={() => addToCart(productDetail.id, 1)}
                         >
-                            Agregar al carrito
+                            Add to cart
                         </button>
                     </div>
                 </section>

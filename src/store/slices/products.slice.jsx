@@ -10,6 +10,9 @@ export const productsSlice = createSlice({
             const products = action.payload;
             return products;
         },
+        filterProductsByPrice: (state, action) => {
+            return state.filter(product => product.price >= action.payload.minPrice && product.price <= action.payload.maxPrice)
+        }
     },
 });
 
@@ -44,6 +47,14 @@ export const filterCategoryThunk = (categoryId) => (dispatch) => {
         .finally(() => dispatch(setIsLoading(false)));
 };
 
-export const { setProducts } = productsSlice.actions;
+export const filterPriceThunk = ({ minPrice, maxPrice }) => (dispatch) => {
+    dispatch(setIsLoading(true))
+    axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/products')
+        .then((res) => dispatch(setProducts(res.data.data.products)))
+        .then(() => dispatch(filterProductsByPrice({ minPrice, maxPrice })))
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
+export const { setProducts, filterProductsByPrice } = productsSlice.actions;
 
 export default productsSlice.reducer;

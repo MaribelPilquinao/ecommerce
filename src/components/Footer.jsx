@@ -11,16 +11,17 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/in/maribel-pilquinao/">
                     <img className='footer__icon' src={iconLinkedin} alt="icon linkedin" />
                 </a>
-                <a href="https://www.instagram.com/mar_alejandrap/">
+                <a href="https://www.instagram.com/academlohq/">
                     <img className='footer__icon-instagram'src={iconInstagram} alt="icon instagram" />
                 </a>
-                <a href="https://www.facebook.com/maribel.pilquinao.3/">
+                <a href="https://www.facebook.com/academlo">
                     <img className='footer__icon-facebook' src={iconFacebook} alt="icon facebook" />
                 </a>
             </div>
             <section className="footer__text">
                 <h4>© Academlo</h4>
                 <p>Todos los derechos reservados</p>
+                <p style={{fontSize: '.7rem', marginTop: '-1rem'}}>Code by Maribel Pilquinao</p>
             </section>
 
         </footer>
